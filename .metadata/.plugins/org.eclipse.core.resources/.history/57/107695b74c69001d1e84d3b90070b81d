@@ -1,0 +1,74 @@
+package com.mission.controller;
+
+import java.lang.reflect.Member;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.apache.coyote.http11.upgrade.UpgradeApplicationBufferHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+import com.mission.domain.MemberVO;
+
+@RestController
+public class MemberController {
+	
+	private List<MemberVO> list;
+	public MemberController() {
+		list = new ArrayList<MemberVO>();
+		for (int i = 0; i <10 ; i++) {
+			list.add(new MemberVO(i, "1234", "이름"+i,new Date()));
+		}
+	}
+
+	@GetMapping("/Member")	
+	public List<MemberVO> getMembers() {
+		return list;
+	}
+	
+	
+	@GetMapping("/Member/{id}")
+	public MemberVO getMember(@PathVariable int id) {
+		// 위에서 작성한 list를 VO객체 m에 넣고 for 반복문 실행함
+		for (MemberVO m:list) {
+			// getID를 통하여 얻은 값이 ParhVariable을 통하여 찾는값과 일치한경우 VO객체 리턴
+			// 만약 문자열을 비교하는 경우 equals() 형식으로 들어갔어야 됨
+			if (m.getId() == id) {
+				return m;
+			}
+		}
+		// for를 빠져나온경우 탐색하는값이 없다는 뜻이므로 null을 리턴시킴
+		return null;
+	} 
+	
+	@PostMapping("/Member") 
+	public MemberVO addMember(MemberVO add) {
+		MemberVO member = new MemberVO();
+		member.setId(add.getId());
+		member.setName(add.getName());
+		member.setPass(add.getPass());
+		member.setRegidate(add.getRegidate());
+		
+		list.add(member);
+		
+		return member;
+	}
+	
+	@PutMapping("/Member") 
+	public MemberVO updateMember (MemberVO up) {
+		MemberVO member = new MemberVO();
+		
+		member.setId(add.getId());
+		member.setName(add.getName());
+		member.setPass(add.getPass());
+		member.setRegidate(add.getRegidate());
+		
+		list.set(member);
+		
+		return member;
+	}
+	
+}

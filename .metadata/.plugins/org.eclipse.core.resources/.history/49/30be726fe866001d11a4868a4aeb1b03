@@ -1,0 +1,30 @@
+package com.rubypaper.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+public class BoardController {
+	
+	public BoardController() {
+		System.out.println("==> BoardController 생성");
+	}
+	
+	@GetMapping("/hello")
+	public String hello1 (String name) {
+		return "Hello : " + name;
+	}
+	
+	@GetMapping("/hello")
+	public String hello2 (String name) {
+		return "Hello : " + name;
+	}
+	
+	@GetMapping("/hello")
+	public String hello3 (String name) {
+		return "Hello : " + name;
+	}
+	
+	@GetMapping("/hello")
+	public String hello4 (String name) {
+		return "Hello : " + name;
+	}
+}

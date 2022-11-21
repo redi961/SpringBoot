@@ -1,0 +1,19 @@
+package com.mission.domain;
+
+import java.util.Date;
+
+public class MemberVO  {
+
+	public int id;
+	public String pass;
+	public String name;
+	public Date regidate = new Date();
+	
+	public  MemberVO (int mid, String mpass, String mname, Date mregidate) {
+		mid = this.id;
+		mpass = this.pass;
+		mname = this.name;
+		mregidate = this.regidate;
+	}
+
+}

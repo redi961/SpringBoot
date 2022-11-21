@@ -1,0 +1,5 @@
+package com.mission.service;
+
+public class MemberService {
+
+}
