@@ -12,7 +12,6 @@ public class MemberVO  {
 	public MemberVO () {}
 	
 	public MemberVO (int mid, String mpass, String mname, Date mregidate) {
-		
 		setId(mid);
 		setPass(mpass);
 		setName(mname);
