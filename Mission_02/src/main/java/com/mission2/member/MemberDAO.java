@@ -4,12 +4,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.mission2.JDBC.JDBConnect;
 
 public class MemberDAO extends JDBConnect {
 	static PreparedStatement psmt;
-	JDBConnect jdbc;
+	static JDBConnect jdbc;
+	private ArrayList<MemberDTO> list = new ArrayList<>();
 	
 	public MemberDAO() {
 		jdbc = new JDBConnect("org.h2.Driver", "jdbc:h2:tcp://localhost/~/mvcboard", "sa", "");
@@ -17,7 +19,7 @@ public class MemberDAO extends JDBConnect {
 	public void sqlRun() {
 
 		String query = "SELECT * FROM member";
-		try { /* 데이터베이스에 질의 결과를 가져오는 과정 */
+		try { 
 			Statement stmt = jdbc.con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 
@@ -33,13 +35,13 @@ public class MemberDAO extends JDBConnect {
 		}
 	}
 
-	public void sqladd() {
+	public void sqladd(String id, String pass, String name) {
 		String query = "INSERT INTO member (id, pass, name)" + "Values (?, ?, ?)";
 		try {
 			PreparedStatement ps = jdbc.con.prepareCall(query);
-			ps.setString(1, "musthave3");
-			ps.setString(2, "1234");
-			ps.setString(3, "머스트해브3");
+			ps.setString(1, id);
+			ps.setString(2, pass);
+			ps.setString(3, name);
 			ps.executeUpdate();
 			ps.close();
 			System.out.println("==== 칼럼 추가완료 ====");
@@ -48,11 +50,14 @@ public class MemberDAO extends JDBConnect {
 		}
 	}
 
-	public void sqlUpdate() {
-		String query = "UPDATE member set name = '머스트해브99' WHERE id = ? ";
+	public void sqlUpdate(String id, String pass, String name) {
+		String query = "UPDATE member set name = ?, ?, ? WHERE id = ? ";
 		try {
 			PreparedStatement ps = jdbc.con.prepareCall(query);
-			ps.setString(1, "musthave2");
+			ps.setString(1, id);
+			ps.setString(2, pass);
+			ps.setString(3, name);
+			ps.setString(4, id);
 			ps.executeUpdate();
 			ps.close();
 			System.out.println("=== 수정이 성공적으로 진행되었습니다. ===");
@@ -61,11 +66,11 @@ public class MemberDAO extends JDBConnect {
 		}
 	}
 
-	public void sqlDel() {
+	public void sqlDel(String id) {
 		String query = "DELETE FROM member where id = ?";
 		try {
 			PreparedStatement ps = jdbc.con.prepareCall(query);
-			ps.setString(1, "musthave2");
+			ps.setString(1, id);
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -89,7 +94,25 @@ public class MemberDAO extends JDBConnect {
 			e.printStackTrace(); 
 		}
 	}
-
+	
+	public ArrayList<MemberDTO> listup() {
+		String query = "SELECT * FROM member";
+		try {
+			Statement stmt = jdbc.con.createStatement();
+			ResultSet rs =  stmt.executeQuery(query);
+			while (rs.next()) {
+				MemberDTO dto = new MemberDTO();
+				dto.setId(rs.getString("id"));
+				dto.setPass(rs.getString("pass"));
+				dto.setName(rs.getString("name"));
+				dto.setRegidate(rs.getString("regidate"));
+				list.add(dto);	
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
 
 
