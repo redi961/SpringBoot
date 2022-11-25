@@ -10,14 +10,16 @@ public class MemberDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberDTO(String id, String pass, String name, String regidate) {
-		super();
+	public MemberDTO(String id, String pass, String name) {
 		this.id = id;
 		this.pass = pass;
 		this.name = name;
-		this.regidate = regidate;
 	}
-
+	
+	public MemberDTO(String id) {
+		this.id = id;
+	}
+	
 	public String getId() {
 		return id;
 	}

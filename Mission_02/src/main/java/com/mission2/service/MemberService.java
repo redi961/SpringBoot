@@ -6,9 +6,9 @@ import com.mission2.member.MemberDAO;
 import com.mission2.member.MemberDTO;
 
 public class MemberService {
-	
+
 	private MemberDAO dao;
-	
+
 	public MemberService() {
 		dao = new MemberDAO();
 	}
@@ -16,23 +16,23 @@ public class MemberService {
 	public ArrayList<MemberDTO> listup() {
 		return dao.listup();
 	}
-	
+
 	public void addDB(String id, String pass, String name) {
-		dao.sqladd(id, pass, name);
-		System.out.println("==================");
+		MemberDTO dto = new MemberDTO(id, pass, name);
+		dao.memadd2(dto);
+		System.out.println("======= 칼럼 추가완료 =======");
 		dao.sqlRun();
 	}
 
 	public void upDB(String id, String pass, String name) {
-		dao.sqlUpdate(id, pass, name);
-		System.out.println("==================");
+		MemberDTO dto = new MemberDTO(id, pass, name);
+		dao.sqlUpdate2(dto);
+		System.out.println("=== 수정이 성공적으로 진행되었습니다. ===");
 		dao.sqlRun();
 	}
 
-	public void delDB(String id) {
-		dao.sqlDel(id);
-		System.out.println("==================");
-		dao.sqlRun();
+	public MemberDTO delDB2(String id) {
+		return dao.sqlDel2(id);
 	}
-	
+
 }
