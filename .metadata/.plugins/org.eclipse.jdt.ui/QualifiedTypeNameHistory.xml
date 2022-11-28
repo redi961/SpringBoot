@@ -12,9 +12,7 @@
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="org.springframework.boot.WebApplicationType"/>
     <fullyQualifiedTypeName name="com.example.demo.Mission01Application"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="org.apache.coyote.http11.upgrade.UpgradeApplicationBufferHandler"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.mission.domain.MemberVO"/>
     <fullyQualifiedTypeName name="com.anno.AnnoTest"/>
     <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
@@ -51,4 +49,11 @@
     <fullyQualifiedTypeName name="com.mission2.controller.MemberController"/>
     <fullyQualifiedTypeName name="javax.imageio.plugins.tiff.GeoTIFFTagSet"/>
     <fullyQualifiedTypeName name="com.mission2.member.MemberDTO"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+    <fullyQualifiedTypeName name="edu.pnu.domain.MemberVO"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="edu.pnu.dao.MemberDaoListImpl"/>
 </qualifiedTypeNameHistroy>
