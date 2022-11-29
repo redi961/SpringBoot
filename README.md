@@ -6,4 +6,5 @@
 # JPA 선행 작업
  + help -> ins new soft -> work with -> latest 선택후 web,xml 선택후 다운로드
  + mvnrepository를 통하여 h2 / junit / hibernate 의 final 버전을 pom -> dependency 를 통하여 추가
-  + -> 이 과정에서 scope/test는 삭제 처리 할 것 
+  ++ -> 이 과정에서 scope/test는 삭제 처리 할 것 
+ + 필요 코드 : https://blog.naver.com/PostView.naver?blogId=geodb&logNo=222888968016&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=&from=postList&userTopListOpen=true&userTopListCount=10&userTopListManageOpen=false&userTopListCurrentPage=1 참조
