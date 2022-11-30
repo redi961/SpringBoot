@@ -6,16 +6,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+
 import edu.pnu.domain.MemberVO;
 
-//@Repository
+@Repository
+@Qualifier("list")
 public class MemberDaoListImpl implements MemberInterface {
 	private List<MemberVO> list;
 	
 	public MemberDaoListImpl() {
 		list = new ArrayList<>();
 		for (int i = 1 ; i < 21 ; i++) {
-			list.add(new MemberVO(i, "1234", "이름"+i, new Date()));
+			list.add(new MemberVO(i, "musthave"+i, "1234", "이름"+i , new Date()));
 		}	
 	}
 	
@@ -28,9 +32,9 @@ public class MemberDaoListImpl implements MemberInterface {
 	}
 
 	@Override
-	public Map<String, Object> getMember(Integer id) {
+	public Map<String, Object> getMember(Integer num) {
 		for (MemberVO m : list) {
-			if (m.getId() == id) {
+			if (m.getNum() == num) {
 				Map<String, Object> map = new HashMap<>();
 				map.put("sql", "from list getMember()");
 				map.put("data", m);
@@ -40,13 +44,13 @@ public class MemberDaoListImpl implements MemberInterface {
 		return null;
 	}
 	
-	private int getNextId() {
+	private int getNextNum() {
 		return list.size() + 1;
 	}
 	
 	@Override
 	public Map<String, Object> addMember(MemberVO member) {
-		member.setId(getNextId());
+		member.setNum(getNextNum());
 		member.setRegidate(new Date());
 		list.add(member);
 		
@@ -75,11 +79,10 @@ public class MemberDaoListImpl implements MemberInterface {
 	}
 
 	@Override
-	public Map<String, Object> deleteMember(Integer id) {
+	public Map<String, Object> deleteMember(Integer num) {
 		for (MemberVO m : list) {
-			if (m.getId() == id) {
+			if (m.getNum() == num) {
 				list.remove(m);
-				
 				Map<String, Object> map = new HashMap<>();
 				map.put("sql", "from list deleteMember");
 				map.put("data", m);	

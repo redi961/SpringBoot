@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import edu.pnu.dao.log.LogDao;
@@ -12,7 +14,10 @@ import edu.pnu.domain.MemberVO;
 
 @Service
 public class MemberService {
-
+	
+	// 지정한 클래스 혹은 인터페이스를 new를 사용하지않는 형태로 사용 가능하게함, 이때 해당 생성자를 이용하는 Repository는 단 한개여야만 하며, 두개 이상일시 에러가 발생함
+	// 두개 이상의 Repository를 사용하고 싶을때에는 qualifier등을 이용하여 별도의 ID를 지정함으로써 사용가능함
+	// @Qualifier("list") // 지정시 qualifier의 이름이 list인 클래스를 로드함 & 지정이 없을시 primary 설정된 클래스를 로드함
 	@Autowired
 	private MemberInterface memberDao;
 

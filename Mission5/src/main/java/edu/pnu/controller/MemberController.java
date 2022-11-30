@@ -36,15 +36,15 @@ public class MemberController {
 	}
 
 	@GetMapping("/member/{id}")
-	public MemberVO getMember(@PathVariable Integer id) {
-		log.info(String.format("MemberController - getMember(%d)가 호출됨.", id));
-		return memberService.getMember(id);
+	public MemberVO getMember(@PathVariable Integer num) {
+		log.info(String.format("MemberController - getMember(%d)가 호출됨.", num));
+		return memberService.getMember(num);
 	}
 
 	@GetMapping("/member/body") // JSON으로 데이터를 요청하는 경우
 	public MemberVO getMemberbyJSON(@RequestBody MemberVO member) {
 		log.info(String.format("MemberController - getMemberbyJSON(%s)이 호출됨.", member));
-		return memberService.getMember(member.getId());
+		return memberService.getMember(member.getNum());
 	}
 	
 	@PostMapping("/member")
@@ -60,8 +60,8 @@ public class MemberController {
 	}
 	
 	@DeleteMapping("/member/{id}")
-	public MemberVO deleteMember(@PathVariable Integer id) {
-		log.info(String.format("MemberController - deleteMember(%ㅇ)가 호출됨.", id));
-		return memberService.deleteMember(id);
+	public MemberVO deleteMember(@PathVariable Integer num) {
+		log.info(String.format("MemberController - deleteMember(%ㅇ)가 호출됨.", num));
+		return memberService.deleteMember(num);
 	}
 }

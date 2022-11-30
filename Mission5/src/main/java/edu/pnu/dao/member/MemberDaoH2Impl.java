@@ -12,10 +12,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import edu.pnu.domain.MemberVO;
 
+// 별도의 지정이 없을시 최우선적으로 Autowired로 로드됨
+@Primary
+@Qualifier("DB")
 @Repository
 public class MemberDaoH2Impl implements MemberInterface {
 	private Connection con = null;
@@ -25,7 +30,7 @@ public class MemberDaoH2Impl implements MemberInterface {
             // JDBC 드라이버 로드
             Class.forName("org.h2.Driver");
             
-            con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/springboot", "sa", "");
+            con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/mvcboard", "sa", "");
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -36,14 +41,15 @@ public class MemberDaoH2Impl implements MemberInterface {
 	public Map<String, Object> getMembers() {
 		Statement st = null;
 		ResultSet rs = null;
-		String sqlString = "select * from member order by id asc";
+		String sqlString = "select * from member order by num asc";
 		try {
 			List<MemberVO> list = new ArrayList<>();
 			st = con.createStatement();
 			rs = st.executeQuery(sqlString);
 			while(rs.next() ) {
 				MemberVO m = new MemberVO();
-				m.setId(rs.getInt("id"));
+				m.setNum(rs.getInt("num"));
+				m.setId(rs.getString("id"));
 				m.setPass(rs.getString("pass"));
 				m.setName(rs.getString("name"));
 				m.setRegidate(rs.getDate("regidate"));
@@ -67,16 +73,17 @@ public class MemberDaoH2Impl implements MemberInterface {
 	}
 
 	@Override
-	public Map<String, Object> getMember(Integer id) {
+	public Map<String, Object> getMember(Integer num) {
 		Statement st = null;
 		ResultSet rs = null;
 		try {
-			String sqlString = String.format("select * from member where id=%d", id);
+			String sqlString = String.format("select * from member where num = %d", num);
 			st = con.createStatement();
 			rs = st.executeQuery(sqlString);
 			rs.next();
 			MemberVO m = new MemberVO();
-			m.setId(rs.getInt("id"));
+			m.setNum(rs.getInt("num"));
+			m.setId(rs.getString("id"));
 			m.setPass(rs.getString("pass"));
 			m.setName(rs.getString("name"));
 			m.setRegidate(rs.getDate("regidate"));
@@ -97,12 +104,12 @@ public class MemberDaoH2Impl implements MemberInterface {
 		return null;
 	}
 	
-	private int getNextId() {
+	private int getNextNum() {
 		Statement st = null;
 		ResultSet rs = null;
 		try {
 			st = con.createStatement();
-			rs = st.executeQuery("select max(id) from member");
+			rs = st.executeQuery("select max(num) from member");
 			rs.next();
 			return rs.getInt(1) + 1;
 		} catch (Exception e) {
@@ -120,15 +127,12 @@ public class MemberDaoH2Impl implements MemberInterface {
 	
 	@Override
 	public Map<String, Object> addMember(MemberVO member) {
-		
-		int id = getNextId();
-		
+		int id = getNextNum();
 		Statement st = null;
 		try {
 			String sqlString = String.format("insert into member (id,name,pass,regidate) values (%d,'%s','%s','%s')",
 				id, member.getName(), member.getPass(), new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime()));
 			st = con.createStatement();
-
 			Map<String, Object> ret = new HashMap<>();
 			if (st.executeUpdate(sqlString) == 1) {
 				Map<String, Object> map = getMember(id);
@@ -156,13 +160,13 @@ public class MemberDaoH2Impl implements MemberInterface {
 	public Map<String, Object> updateMember(MemberVO member) {
 		Statement st = null;
 		try {
-			String sqlString = String.format("update member set name='%s',pass='%s' where id=%d",
-					member.getName(), member.getPass(), member.getId());
+			String sqlString = String.format("update member set name='%s',pass='%s' where num = %d",
+					member.getName(), member.getPass(), member.getNum());
 			st = con.createStatement();
 			
 			Map<String, Object> ret = new HashMap<>();
 			if (st.executeUpdate(sqlString) == 1) {
-				Map<String, Object> map = getMember(member.getId());
+				Map<String, Object> map = getMember(member.getNum());
 				ret.put("sql", sqlString);
 				ret.put("data", map.get("data"));
 			}

@@ -8,21 +8,21 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="prepa"/>
+			<item value="create"/>
+			<item value="per"/>
+			<item value="localhost"/>
+			<item value="spring"/>
+			<item value="roll"/>
+			<item value="chap"/>
+			<item value="h2"/>
+			<item value="test"/>
+			<item value="local"/>
 			<item value="log"/>
 			<item value="integer"/>
 			<item value="interger"/>
 			<item value="id"/>
 			<item value="dep"/>
-			<item value="next"/>
-			<item value="nextid"/>
-			<item value="nextnum"/>
-			<item value="nextnum,"/>
-			<item value="con"/>
-			<item value="del2"/>
-			<item value="del"/>
-			<item value="close"/>
-			<item value="mem"/>
-			<item value="this.mem"/>
 		</list>
 		<list key="replacehistory">
 		</list>

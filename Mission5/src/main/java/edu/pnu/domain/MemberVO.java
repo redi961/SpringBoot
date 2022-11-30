@@ -3,7 +3,8 @@ package edu.pnu.domain;
 import java.util.Date;
 
 public class MemberVO {
-    private int id;
+    private int num;
+    private String id;
     private String pass;
     private String name;
     private Date regidate;
@@ -11,19 +12,28 @@ public class MemberVO {
     public MemberVO() {
 	}
 
-	public MemberVO(int id, String pass, String name, Date regidate) {
+	public MemberVO(int num, String id, String pass, String name, Date regidate) {
+		this.num = num;
 		this.id = id;
 		this.pass = pass;
 		this.name = name;
 		this.regidate = regidate;
 	}
 
-	public int getId() {
-		return id;
+	public int getNum() {
+		return num;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	public void setNum(int num) {
+		this.num = num;
 	}
 
 	public String getPass() {
@@ -52,6 +62,6 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pass=" + pass + ", name=" + name + ", regidate=" + regidate + "]";
+		return "MemberVO [num=" + num + ", id=" + id + ", pass=" + pass + ", name=" + name + ", regidate=" + regidate + "]";
 	}    
 }

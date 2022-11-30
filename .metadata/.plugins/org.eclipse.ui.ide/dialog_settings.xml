@@ -88,6 +88,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\STS4Workspace\Mission51"/>
+			<item value="C:\STS4Workspace\Mission5"/>
 			<item value="C:\STS4Workspace\Mission4"/>
 			<item value="C:\STS4Workspace\Mission3"/>
 			<item value="C:\Users\user\Downloads\KDigitalPNUMission-master\Mission3"/>

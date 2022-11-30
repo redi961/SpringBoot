@@ -16,7 +16,7 @@ public class LogDaoH2Impl implements LogDao {
             // JDBC 드라이버 로드
             Class.forName("org.h2.Driver");
             
-            con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/springboot", "sa", "");
+            con = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/mvcboard", "sa", "");
         }
         catch (Exception e) {            
             e.printStackTrace();
