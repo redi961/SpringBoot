@@ -18,7 +18,7 @@ public class Board {
 	@Id @GeneratedValue
 	private Long seq;
 	private String title;
-	private String wirter;
+	private String writer;
 	private String content;
 	// 타임스탬프로 기록시 연/월/일 시/분/초까지 표기됨
 	@Temporal(value = TemporalType.TIMESTAMP)
@@ -33,7 +33,7 @@ public class Board {
 		super();
 		this.seq = seq;
 		this.title = title;
-		this.wirter = wirter;
+		this.writer = wirter;
 		this.content = content;
 		this.createDate = createDate;
 		this.cnt = cnt;
@@ -41,7 +41,7 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [seq=" + seq + ", title=" + title + ", wirter=" + wirter + ", content=" + content
+		return "Board [seq=" + seq + ", title=" + title + ", wirter=" + writer + ", content=" + content
 				+ ", createDate=" + createDate + ", cnt=" + cnt + "]";
 	}
 
@@ -62,11 +62,11 @@ public class Board {
 	}
 
 	public String getWirter() {
-		return wirter;
+		return writer;
 	}
 
-	public void setWirter(String wirter) {
-		this.wirter = wirter;
+	public void setWriter(String wirter) {
+		this.writer = wirter;
 	}
 
 	public String getContent() {
