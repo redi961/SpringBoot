@@ -73,7 +73,7 @@ public class RealationMappingTest {
 	
 	public void testManyToOneSelect() {
 		//findbyId를 통하여 반환받은 객체는 optinal객체로써 wrapping 되어있다. 따라서 get()등을 통하여 값을 따올 필요가있다.
-		//더욱이 특정 값을 반환 시키기위하여 get().뒤에 추가적인 get을 붙이는것도 가능하다
+		//특정 값을 반환 시키기위하여 get().뒤에 추가적인 get을 붙이는것도 가능하다
 		Board board = boardRepo.findById(25L).get();
 		System.out.println("[" + board.getSeq() + "번 게시글 정보 ]");
 		System.out.println("제목 :: " + board.getTitle());
@@ -82,7 +82,7 @@ public class RealationMappingTest {
 		System.out.println("작성자 권한 :: " + board.getMember().getRole());
 	}
 	
-	@Test
+	
 	public void testTwoWayMapping () {
 		Member member = memberRepo.findById("member2").get();
 		
