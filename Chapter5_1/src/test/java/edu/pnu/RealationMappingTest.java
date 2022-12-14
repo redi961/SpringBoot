@@ -23,6 +23,7 @@ public class RealationMappingTest {
 	private MemberRepository memberRepo;
 	
 	// 멤버생성 / 게시글 생성 테스트 예문
+	@Test
 	public void testManyToOneInsert() {
 		Member member1 = new Member();
 		member1.setId("member1");
@@ -38,37 +39,37 @@ public class RealationMappingTest {
 		member2.setRole("Admin");
 		memberRepo.save(member2);
 
-		for (int i = 1; i <= 3; i++) {
-			Board board = new Board();
-			board.setMember(member1);
-			board.setTitle("둘리가 등록한 게시글 " + i);
-			board.setContent("둘리가 등록한 게시글 내용 " + i);
-			board.setCreateDate(new Date());
-			board.setCnt(0L);
-			boardRepo.save(board);
-		}
-		
-		for (int i = 1; i <= 3; i++) {
-			Board board = new Board();
-			board.setMember(member2);
-			board.setTitle("도우너가 등록한 게시글 " + i);
-			board.setContent("도우너가 등록한 게시글 내용 " + i);
-			board.setCreateDate(new Date());
-			board.setCnt(0L);
-			boardRepo.save(board);
-		}
-		
-		Random rd = new Random();
-		for (Long i = 1L ; i <= 20; i++) {
-			Board b = new Board();
-			b.setSeq(i);
-			b.setTitle("제목 " + i);
-			b.setContent("테스트 내용 " + i);
-			b.setCreateDate(new Date());
-			b.setCnt(rd.nextLong(100));
-			b.setMember(member1);
-			boardRepo.save(b);
-		}
+//		for (int i = 1; i <= 3; i++) {
+//			Board board = new Board();
+//			board.setMember(member1);
+//			board.setTitle("둘리가 등록한 게시글 " + i);
+//			board.setContent("둘리가 등록한 게시글 내용 " + i);
+//			board.setCreateDate(new Date());
+//			board.setCnt(0L);
+//			boardRepo.save(board);
+//		}
+//		
+//		for (int i = 1; i <= 3; i++) {
+//			Board board = new Board();
+//			board.setMember(member2);
+//			board.setTitle("도우너가 등록한 게시글 " + i);
+//			board.setContent("도우너가 등록한 게시글 내용 " + i);
+//			board.setCreateDate(new Date());
+//			board.setCnt(0L);
+//			boardRepo.save(board);
+//		}
+//		
+//		Random rd = new Random();
+//		for (Long i = 1L ; i <= 20; i++) {
+//			Board b = new Board();
+//			b.setSeq(i);
+//			b.setTitle("제목 " + i);
+//			b.setContent("테스트 내용 " + i);
+//			b.setCreateDate(new Date());
+//			b.setCnt(rd.nextLong(100));
+//			b.setMember(member1);
+//			boardRepo.save(b);
+//		}
 	}
 	
 	public void testManyToOneSelect() {
