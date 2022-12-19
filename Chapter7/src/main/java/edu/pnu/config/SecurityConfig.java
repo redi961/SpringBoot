@@ -17,7 +17,6 @@ public class SecurityConfig {
 	@Autowired
 	private DataSource dataSource;
 	
-	
 	@Bean
 	public SecurityFilterChain sercurityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf().disable();

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Crea"/>
+		<item key="selection" value="ADMIN"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="crea"/>
-			<item value="jpa"/>
-			<item value="member_id"/>
-			<item value="member_"/>
-			<item value="member+"/>
+			<item value="admin"/>
+			<item value="admi"/>
+			<item value="role"/>
+			<item value="getBoard"/>
+			<item value="securi"/>
+			<item value="secu"/>
+			<item value="security"/>
+			<item value="setmem"/>
+			<item value="set"/>
+			<item value="name"/>
+			<item value="type"/>
 			<item value="member"/>
-			<item value="writer"/>
-			<item value="cre"/>
-			<item value="wir"/>
-			<item value="wri"/>
-			<item value="package edu.pnu.controller;"/>
-			<item value="&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=EUC-KR&quot;"/>
-			<item value="find"/>
-			<item value="mvc.view"/>
-			<item value="def"/>
+			<item value="crea"/>
+			<item value="cnt"/>
+			<item value="time"/>
 		</list>
 		<list key="replacehistory">
 		</list>
